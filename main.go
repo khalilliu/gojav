@@ -1,14 +1,10 @@
 package main
 
 import (
-	"gojav/engine"
-	"gojav/parser"
+	_ "gojav/router"
+	"github.com/astaxie/beego"
 )
 
 func main() {
-	url := "http://www.zhenai.com/zhenghun"
-	engine.Run(engine.Request{
-		Url: url,
-		ParseFunc: parser.ParseCityList,
-	})
+	beego.Run()
 }
