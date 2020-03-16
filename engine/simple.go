@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	co = color.New(color.FgCyan, color.Bold)
+	co = color.New(color.FgCyan)
 )
 
 type SimpleEngine struct {

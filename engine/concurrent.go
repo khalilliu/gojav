@@ -37,7 +37,7 @@ func (e *ConcurrentEngine) Run(seeds ...Request) {
 	for {
 		result := <-out
 		for _, item := range result.Items {
-			co.Printf("Got %d  item : %v\n",itemCount, item)
+			co.Printf("Got %d item : %v\n", itemCount, item)
 			itemCount++
 		}
 
