@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	cityLimit = 2
+	cityLimit = 20
  	cityListReg= `<a href="(http://www.zhenai.com/zhenghun/[0-9a-z]+)" [^>]*>([^<]+)</a>`
 )
 

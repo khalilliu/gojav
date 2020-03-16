@@ -2,8 +2,8 @@ package parser
 
 import (
 	"fmt"
-	"gojav/engine"
 	"gojav/model"
+	"gojav/engine"
 	"log"
 	"regexp"
 	"github.com/bitly/go-simplejson"

@@ -3,12 +3,22 @@ package main
 import (
 	"gojav/engine"
 	"gojav/parser"
+	"gojav/scheduler"
 )
 
 func main() {
 	url := "http://www.zhenai.com/zhenghun"
-	engine.Run(engine.Request{
-		Url: url,
+	//engine.SimpleEngine{}.Run(engine.Request{
+	//	Url: url,
+	//	ParseFunc: parser.ParseCityList,
+	//})
+
+	e := engine.ConcurrentEngine{
+		Scheduler:   &scheduler.SimpleScheduler{},
+		WorkerCount: 100,
+	}
+	e.Run(engine.Request{
+		Url:       url,
 		ParseFunc: parser.ParseCityList,
 	})
 }
