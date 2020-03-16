@@ -1,0 +1,123 @@
+GET http://localhost:9200/datint_profile/zhenai/_search?size=100
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2020-03-17T123428.200.json
+
+###
+
+GET http://localhost:9200/datint_profile/zhenai/_search
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2020-03-17T123253.200.json
+
+###
+
+GET http://localhost:9200/datint_profile/zhenai/_search
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2020-03-17T120750.200.json
+
+###
+
+GET http://localhost:9200/datint_profile/zhenai/_search
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2020-03-17T120220.200.json
+
+###
+
+GET http://localhost:9200/datint_profile/zhenai/_search
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2020-03-16T114308.200.json
+
+###
+
+GET http://localhost:9200/kongyixueyuan/_mapping
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2020-03-16T110505.200.json
+
+###
+
+GET http://localhost:9200/kongyixueyuan/_search?q=golang
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2020-03-16T110334.200.json
+
+###
+
+GET http://localhost:9200/kongyixueyuan/course/2
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2020-03-16T110238.200.json
+
+###
+
+POST http://localhost:9200/kongyixueyuan/course/2
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{   "name": "html5",   "instructor": "ruby" }
+
+<> 2020-03-16T110229.201.json
+
+###
+
+GET http://localhost:9200/kongyixueyuan/course/1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2020-03-16T095910.200.json
+
+###
+
+GET http://localhost:9200/kongyixueyuan/course/1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{   "name": "golang",   "instructor": "khalil" }
+
+<> 2020-03-16T095858.200.json
+
+###
+
+POST http://localhost:9200/kongyixueyuan/course/1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{   "name": "golang",   "instructor": "khalil" }
+
+<> 2020-03-16T095823.201.json
+
+###
+
+GET http://localhost:9200
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2020-03-16T095333.200.json
+
+###
+

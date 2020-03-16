@@ -21,5 +21,6 @@ func (s *SimpleScheduler) WorkerChan() chan engine.Request {
 }
 
 func (s *SimpleScheduler)  Run() {
+	// init a worker chan
 	s.workerChan = make(chan engine.Request)
 }

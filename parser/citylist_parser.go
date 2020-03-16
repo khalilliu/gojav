@@ -17,7 +17,7 @@ func ParseCityList(contents []byte) engine.ParseResult {
 	result := engine.ParseResult{}
 	i := 0
 	for _, c := range all {
-		result.Items = append(result.Items, string(c[2]))
+		//result.Items = append(result.Items, string(c[2]))
 		result.Requests = append(result.Requests, engine.Request{
 			Url:       string(c[1]),
 			ParseFunc: ParseCity,

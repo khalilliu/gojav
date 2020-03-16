@@ -1,0 +1,11 @@
+{
+  "_index": "kongyixueyuan",
+  "_type": "course",
+  "_id": "2",
+  "_version": 1,
+  "found": true,
+  "_source": {
+    "name": "html5",
+    "instructor": "ruby"
+  }
+}

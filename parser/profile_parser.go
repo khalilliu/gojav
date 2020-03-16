@@ -1,12 +1,11 @@
 package parser
 
 import (
-	"fmt"
-	"gojav/model"
+	"github.com/bitly/go-simplejson"
 	"gojav/engine"
+	"gojav/model"
 	"log"
 	"regexp"
-	"github.com/bitly/go-simplejson"
 )
 
 const (
@@ -16,13 +15,15 @@ const (
 func ParseProfile(content []byte, name string) engine.ParseResult {
 	re := regexp.MustCompile(JsonDataReg)
 	match := re.FindSubmatch(content)
+	result := engine.ParseResult{}
 	if len(match) >= 2 {
 		data := match[1]
 		user := parseUser(data)
 		user.Name = name
-		fmt.Println(user)
+		//fmt.Println(user)
+		result.Items = append(result.Items, user)
 	}
-	return engine.ParseResult{}
+	return result
 }
 
 func parseUser(json []byte) model.User {
