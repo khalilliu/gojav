@@ -30,12 +30,19 @@ func TestSave(t *testing.T) {
 				Education:  "高中及以下",
 			},
 		}
-		err := save(profile)
+
+		client, err := elastic.NewClient(elastic.SetSniff(false))
+		if err != nil {
+			panic(err)
+		}
+
+		const index = "daint_test"
+		err = save(client, profile, index)
 
 		So(err, ShouldBeNil)
 
-		client, _ := elastic.NewClient(elastic.SetSniff(false))
-		resp, err := client.Get().Index("datint_profile").Type(profile.Type).Id(profile.Id).Do(context.Background())
+		resp, err := client.Get().Index(index).Type(profile.Type).Id(profile.Id).Do(context.Background())
+
 
 		var actual engine.Item
 		err = json.Unmarshal([]byte(*resp.Source), &actual)

@@ -14,11 +14,17 @@ func main() {
 	//	ParseFunc: parser.ParseCityList,
 	//})
 
+	itemChan, err := persist.ItemSaver("datint_profile")
+
+	if err != nil {
+		panic(err)
+	}
+
 	e := engine.ConcurrentEngine{
 		//Scheduler:   &scheduler.SimpleScheduler{},
 		Scheduler:   &scheduler.QueueScheduler{},
 		WorkerCount: 5,
-		ItemChan: persist.ItemSaver(),
+		ItemChan: itemChan,
 	}
 	e.Run(engine.Request{
 		Url:       url,

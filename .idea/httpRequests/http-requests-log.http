@@ -1,3 +1,21 @@
+GET http://localhost:9200/datint_profile/zhenai/_count
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2020-03-17T031922.200.json
+
+###
+
+GET http://localhost:9200/datint_profile/zhenai/_count
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2020-03-17T025716.200.json
+
+###
+
 POST http://localhost:9200/datint_profile/zhenai/_delete_by_query
 Accept: */*
 Cache-Control: no-cache

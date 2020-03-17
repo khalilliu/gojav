@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21ea91a3-59f3-4b2a-a828-6fbad827d7c9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/engine/default.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/engine/concurrent.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/concurrent.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/engine/simple.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/simple.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/engine/types.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/types.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fetcher/fetcher.go" beforeDir="false" afterPath="$PROJECT_DIR$/fetcher/fetcher.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/utils.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser/city_parser.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser/city_parser.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser/citylist_parser.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser/citylist_parser.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser/citylist_parser_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser/citylist_parser_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser/profile_parser.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser/profile_parser.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/persist/itemsaver.go" beforeDir="false" afterPath="$PROJECT_DIR$/persist/itemsaver.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/persist/itemsaver_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/persist/itemsaver_test.go" afterDir="false" />
     </list>
@@ -28,14 +18,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
-              <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+            <state relative-caret-position="310">
+              <caret line="23" column="30" lean-forward="true" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
               <folding>
                 <element signature="e#14#92#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/persist/itemsaver_test.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="107">
+              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/rest-api_2.http">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="87">
+              <caret line="55" column="30" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -74,7 +82,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/default.go">
+        <entry file="file://$PROJECT_DIR$/engine/utils.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="368">
               <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
@@ -86,22 +94,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parser/citylist_parser.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1071">
-              <caret line="55" column="13" lean-forward="true" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
-              <folding>
-                <element signature="e#16#93#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/persist/itemsaver.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-891">
-              <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+            <state relative-caret-position="192">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+              <folding>
+                <element signature="e#17#116#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -122,18 +121,6 @@
               <caret line="89" column="6" lean-forward="true" selection-start-line="89" selection-start-column="6" selection-end-line="89" selection-end-column="6" />
               <folding>
                 <element signature="e#16#183#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parser/city_parser.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="28" column="10" lean-forward="true" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
-              <folding>
-                <element signature="e#16#59#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -174,26 +161,26 @@
         <option value="restClient/response3.json" />
         <option value="$PROJECT_DIR$/engine/types.go" />
         <option value="$PROJECT_DIR$/model/user.go" />
-        <option value="$PROJECT_DIR$/persist/itemsaver.go" />
         <option value="$PROJECT_DIR$/engine/concurrent.go" />
-        <option value="$PROJECT_DIR$/persist/itemsaver_test.go" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/rest-api_2.http" />
         <option value="$PROJECT_DIR$/go.mod" />
         <option value="$PROJECT_DIR$/parser/profile_parser.go" />
         <option value="$PROJECT_DIR$/fetcher/fetcher.go" />
-        <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/parser/citylist_parser.go" />
         <option value="$PROJECT_DIR$/parser/citylist_parser_test.go" />
         <option value="$PROJECT_DIR$/parser/city_parser.go" />
         <option value="$PROJECT_DIR$/engine/default.go" />
         <option value="$PROJECT_DIR$/engine/simple.go" />
+        <option value="$PROJECT_DIR$/persist/itemsaver.go" />
+        <option value="$PROJECT_DIR$/main.go" />
+        <option value="$PROJECT_DIR$/persist/itemsaver_test.go" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/rest-api_2.http" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="168" />
+    <option name="x" value="587" />
     <option name="y" value="23" />
-    <option name="width" value="1272" />
+    <option name="width" value="853" />
     <option name="height" value="849" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -265,6 +252,29 @@
     <option name="REQUEST_HISTORY">
       <list>
         <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:9200/datint_profile/zhenai/_count" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
           <option name="httpMethod" value="POST" />
           <option name="urlBase" value="http://localhost:9200/datint_profile/zhenai/_delete_by_query" />
           <option name="urlPath" value="" />
@@ -317,29 +327,6 @@
             </list>
           </option>
           <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://localhost:9200/datint_profile/zhenai/_count" />
-          <option name="urlPath" value="" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-            </list>
-          </option>
           <option name="textToSend" value="" />
           <option name="filesToSend" value="" />
         </RestClientRequest>
@@ -791,7 +778,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.TestParseCityList in gojav/parser">
+  <component name="RunManager" selected="HTTP Request.rest-api_2#6">
     <configuration name="TestParseCityList in gojav/parser" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="gojav" />
       <working_directory value="$PROJECT_DIR$/parser" />
@@ -825,11 +812,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.rest-api_2#6" />
         <item itemvalue="Go Test.TestParseCityList in gojav/parser" />
         <item itemvalue="Go Test.TestSave in gojav/persist" />
         <item itemvalue="HTTP Request.rest-api_2#7" />
         <item itemvalue="HTTP Request.rest-api_2#5" />
-        <item itemvalue="HTTP Request.rest-api_2#6" />
       </list>
     </recent_temporary>
   </component>
@@ -866,14 +853,15 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="168" y="23" width="1272" height="849" extended-state="0" />
+    <frame x="587" y="23" width="853" height="849" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49809885" visible="true" weight="0.24552846" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49809885" visible="true" weight="0.24414304" />
       <window_info id="Structure" order="1" sideWeight="0.50190115" side_tool="true" weight="0.33089432" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.28879893" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28879893" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -950,27 +938,10 @@
     <entry file="file://$PROJECT_DIR$/.idea/httpRequests/2020-03-17T123428.200.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/rest-api_2.http">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/go/pkg/mod/golang.org/x/tools@v0.0.0-20190328211700-ab21143f2384/go/ssa/interp/testdata/src/fmt/fmt.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
           <caret line="2" column="39" lean-forward="true" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/persist/itemsaver_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
-          <folding>
-            <element signature="e#17#157#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1052,13 +1023,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/persist/itemsaver.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-891">
-          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fetcher/fetcher.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-153">
@@ -1090,16 +1054,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/default.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-          <folding>
-            <element signature="e#16#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/simple.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -1110,13 +1064,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/engine/utils.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+          <folding>
+            <element signature="e#16#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/persist/itemsaver.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#17#116#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+        <state relative-caret-position="310">
+          <caret line="23" column="30" lean-forward="true" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
           <folding>
             <element signature="e#14#92#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/persist/itemsaver_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/rest-api_2.http">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="55" column="30" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
         </state>
       </provider>
     </entry>
