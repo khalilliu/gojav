@@ -1,0 +1,14 @@
+{
+  "_index": "datint_profile",
+  "_type": "zhenai",
+  "_id": "_query",
+  "_version": 1,
+  "result": "not_found",
+  "_shards": {
+    "total": 2,
+    "successful": 1,
+    "failed": 0
+  },
+  "_seq_no": 95,
+  "_primary_term": 2
+}

@@ -1,7 +1,6 @@
 package parser
 
 import (
-	"fmt"
 	"gojav/engine"
 	"regexp"
 )
@@ -18,13 +17,14 @@ func ParseCity(contents []byte) engine.ParseResult {
 	all := cityRe.FindAllSubmatch(contents, -1)
 	result := engine.ParseResult{}
 	for _, c := range all {
-		fmt.Println("用户url：", string(c[1]))
+		url := string(c[1])
 		name := string(c[2])
+		//fmt.Println("用户url：", url)
 		//result.Items = append(result.Items, "User:"+name)
 		result.Requests = append(result.Requests, engine.Request{
-			Url: string(c[1]),
+			Url: url,
 			ParseFunc: func(contents []byte) engine.ParseResult {
-				return ParseProfile(contents, name)
+				return ParseProfile(contents, url, name)
 			},
 		})
 	}

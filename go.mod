@@ -11,8 +11,9 @@ require (
 	github.com/kr/pretty v0.2.0 // indirect
 	github.com/mailru/easyjson v0.7.1 // indirect
 	github.com/olivere/elastic v6.2.28+incompatible
-	github.com/pkg/errors v0.9.1 // indirect
+	github.com/pkg/errors v0.9.1
 	github.com/smartystreets/goconvey v1.6.4
 	golang.org/x/net v0.0.0-20200301022130-244492dfa37a
 	golang.org/x/text v0.3.2
+	golang.org/x/tools v0.0.0-20190328211700-ab21143f2384
 )

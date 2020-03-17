@@ -1,0 +1,13 @@
+{
+  "error": {
+    "root_cause": [
+      {
+        "type": "illegal_argument_exception",
+        "reason": "request [/datint_profile/zhenai/_delete_by_query] contains unrecognized parameter: [_type] -> did you mean [type]?"
+      }
+    ],
+    "type": "illegal_argument_exception",
+    "reason": "request [/datint_profile/zhenai/_delete_by_query] contains unrecognized parameter: [_type] -> did you mean [type]?"
+  },
+  "status": 400
+}

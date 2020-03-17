@@ -1,0 +1,4 @@
+{
+  "error": "Incorrect HTTP method for uri [/datint_profile/zhenai] and method [DELETE], allowed: [POST]",
+  "status": 405
+}

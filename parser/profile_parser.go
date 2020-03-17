@@ -1,39 +1,48 @@
 package parser
 
 import (
+	"fmt"
 	"github.com/bitly/go-simplejson"
 	"gojav/engine"
 	"gojav/model"
 	"log"
 	"regexp"
+	"strconv"
+	"strings"
 )
 
 const (
 	JsonDataReg = `<script>window.__INITIAL_STATE__=(.+);\(function`
 )
 
-func ParseProfile(content []byte, name string) engine.ParseResult {
+func ParseProfile(content []byte, url, name string) engine.ParseResult {
 	re := regexp.MustCompile(JsonDataReg)
 	match := re.FindSubmatch(content)
 	result := engine.ParseResult{}
 	if len(match) >= 2 {
 		data := match[1]
-		user := parseUser(data)
+		user, id := parseJson(data)
 		user.Name = name
+
 		//fmt.Println(user)
-		result.Items = append(result.Items, user)
+		result.Items = append(result.Items, engine.Item{
+			Url: url,
+			Type: "zhenai",
+			Id : id,
+			Payload: user,
+		})
 	}
 	return result
 }
 
-func parseUser(json []byte) model.User {
+func parseJson(json []byte) (model.Profile, string) {
 	res, err := simplejson.NewJson(json)
 	if err != nil {
 		log.Println("解析json失败。。")
 	}
 	infos, err := res.Get("objectInfo").Get("basicInfo").Array()
 
-	var user model.User
+	var user model.Profile
 	for k, v := range infos {
 		if e, ok := v.(string); ok {
 			switch k {
@@ -57,5 +66,26 @@ func parseUser(json []byte) model.User {
 			}
 		}
 	}
-	return user
+
+	infos2, err := res.Get("objectInfo").Get("detailInfo").Array()
+	for _, v := range infos2 {
+		if e, ok := v.(string); ok {
+			if strings.Contains(e, "族"){
+				user.Hukou = e
+			} else if strings.Contains(e, "房") {
+				user.Height = e
+			} else if strings.Contains(e, "车") {
+				user.Car = e
+			}
+		}
+	}
+
+	gender, err := res.Get("objectInfo").Get("genderString").String()
+	user.Gender = gender
+
+	id, err := res.Get("objectInfo").Get("memberID").Int()
+
+	fmt.Printf("%+v\n", user)
+
+	return user, strconv.Itoa(id)
 }

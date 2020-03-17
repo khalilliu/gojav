@@ -2,7 +2,6 @@ package engine
 
 import (
 	"github.com/fatih/color"
-	"gojav/fetcher"
 	"log"
 )
 
@@ -44,13 +43,3 @@ func (e SimpleEngine)Run(seeds ...Request) {
 	}
 }
 
-func worker(r Request) (ParseResult, error) {
-	co.Printf("Fetching %s\n", r.Url)
-
-	body, err := fetcher.Fetch(r.Url)
-	if err != nil {
-		log.Printf("Fetcher: error fetching url %s %v", r.Url, err)
-		return ParseResult{}, err
-	}
-	return r.ParseFunc(body), nil
-}

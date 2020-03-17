@@ -3,6 +3,7 @@ package fetcher
 import (
 	"bufio"
 	"fmt"
+	"github.com/pkg/errors"
 	"golang.org/x/net/html/charset"
 	"golang.org/x/text/encoding"
 	"golang.org/x/text/encoding/unicode"
@@ -26,7 +27,7 @@ func Fetch(url string) ([]byte,  error) {
 
 	if resp.StatusCode != http.StatusOK {
 		fmt.Println("resp:", resp)
-		return nil, fmt.Errorf("error: status code: %d", resp.StatusCode)
+		return nil, errors.New(fmt.Sprintf("error: status code: %d", resp.StatusCode))
 	}
 	bodyReader := bufio.NewReader(resp.Body)
 	e := determineEncoding(bodyReader)

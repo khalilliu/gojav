@@ -14,7 +14,7 @@ type Scheduler interface {
 type ConcurrentEngine struct {
 	Scheduler   Scheduler // 调度器
 	WorkerCount int       // worker的数量
-	ItemChan chan interface{}
+	ItemChan    chan Item // 接收最终结果的chan
 }
 
 func (e *ConcurrentEngine) Run(seeds ...Request) {
@@ -25,15 +25,15 @@ func (e *ConcurrentEngine) Run(seeds ...Request) {
 	//e.Scheduler.ConfigureMasterWorkerChan(in)
 	e.Scheduler.Run()
 
-	for i:=0 ; i < e.WorkerCount; i++ {
+	for i := 0; i < e.WorkerCount; i++ {
 		createWorker(e.Scheduler.WorkerChan(), out, e.Scheduler)
 	}
 
-	for _,r := range seeds {
+	for _, r := range seeds {
 		e.Scheduler.Submit(r)
 	}
 
-	//从out中获取result，对于item就打印即可，对于request，就继续分配
+	//从out中获取result，传入ItemChan，对于request，就继续分配
 	for {
 		result := <-out
 		for _, item := range result.Items {
@@ -52,7 +52,7 @@ func createWorker(in chan Request, out chan ParseResult, ready ReadyNotifier) {
 	go func() {
 		for {
 			ready.WorkerReady(in)
-			request := <- in
+			request := <-in
 			result, err := worker(request)
 			if err != nil {
 				continue

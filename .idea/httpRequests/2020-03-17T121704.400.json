@@ -1,0 +1,13 @@
+{
+  "error": {
+    "root_cause": [
+      {
+        "type": "action_request_validation_exception",
+        "reason": "Validation Failed: 1: query is missing;"
+      }
+    ],
+    "type": "action_request_validation_exception",
+    "reason": "Validation Failed: 1: query is missing;"
+  },
+  "status": 400
+}
