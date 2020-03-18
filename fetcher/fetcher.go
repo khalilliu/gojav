@@ -2,40 +2,50 @@ package fetcher
 
 import (
 	"bufio"
-	"fmt"
+	"errors"
+	"gojav/config"
 	"golang.org/x/net/html/charset"
 	"golang.org/x/text/encoding"
 	"golang.org/x/text/encoding/unicode"
+	"fmt"
 	"golang.org/x/text/transform"
 	"io/ioutil"
 	"log"
 	"net/http"
+	"time"
 )
 
-func Fetch(url string) ([]byte,  error) {
-	request, _ := http.NewRequest(http.MethodGet, url, nil)
-	request.Header.Add("User-Agent","Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1")
-
-	resp, _ := http.DefaultClient.Do(request)
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		fmt.Println("resp:", resp)
-		return nil, fmt.Errorf("error: status code: %d", resp.StatusCode)
+func Fetch(url string) ([]byte, error) {
+	client := &http.Client{
+		Timeout:  time.Duration(config.Cfg.Timeout  * 1e6),
 	}
-	bodyReader := bufio.NewReader(resp.Body)
-	e := determineEncoding(bodyReader)
-	utf8Reader := transform.NewReader(bodyReader, e.NewDecoder())
 
+	request, _ := http.NewRequest(http.MethodGet,  url, nil)
+	resp, err := client.Do(request)
+	defer resp.Body.Close()
+	if resp == nil {
+		fmt.Println("resp error:", resp)
+		return nil, err
+	}
+	if resp.StatusCode != http.StatusOK {
+		fmt.Println("resp error:", resp)
+		return nil, errors.New(fmt.Sprintf("error: status code: %d", resp.StatusCode))
+	}
+
+	bodyReader := bufio.NewReader(resp.Body)
+	e := determinEncoding(bodyReader)
+	utf8Reader := transform.NewReader(bodyReader, e.NewDecoder())
 	return ioutil.ReadAll(utf8Reader)
 }
 
-func determineEncoding(r *bufio.Reader) encoding.Encoding {
-	bytes, err := r.Peek(1024)
-	if err != nil {
-		log.Printf("Ftcher error:%v", err)
+func determinEncoding(r *bufio.Reader) encoding.Encoding {
+	//bytes, e := bufio.NewReader(r).Peek(1024)
+	bytes, e := bufio.NewReader(r).Peek(1024)
+	if e != nil {
+		//panic(e)
+		log.Printf("Encoding error: %v", e)
 		return unicode.UTF8
 	}
-	e, _, _ := charset.DetermineEncoding(bytes, "")
-	return e
+	e2, _, _ := charset.DetermineEncoding(bytes, "")
+	return e2
 }
