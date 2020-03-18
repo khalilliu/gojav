@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-func Setup() {
+func init() {
 	app := &cli.App{
 		Name:  "jav",
 		Usage: "Crawl javbus Magnet",
@@ -24,7 +24,7 @@ func Setup() {
 				Name:        "timeout",
 				Aliases:     []string{"t"},
 				Usage:       "自定义连接超时时间(毫秒)",
-				Value:       5000,
+				Value:       6000,
 				Destination: &config.Cfg.Timeout,
 			},
 			&cli.IntFlag{
@@ -38,7 +38,7 @@ func Setup() {
 				Name:        "proxy",
 				Aliases:     []string{"x"},
 				Usage:       "使用代理服务器, 例：-x http://127.0.0.1:8087",
-				Value:       "127.0.0.1:1087",
+				Value:       "http://127.0.0.1:1087",
 				Destination: &config.Cfg.Proxy,
 			},
 			&cli.StringFlag{

@@ -9,3 +9,4 @@ type Request struct {
 	Url string
 	ParseFunc func([]byte) ParseResult
 }
+

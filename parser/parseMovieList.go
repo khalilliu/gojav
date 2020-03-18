@@ -6,6 +6,6 @@ import (
 )
 
 func ParseMovieList (content [] byte) engine.ParseResult {
-	fmt.Println(content)
+	fmt.Println(string(content))
 	return engine.ParseResult{}
 }

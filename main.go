@@ -1,12 +1,9 @@
 package main
 
 import (
-	"gojav/cmd"
-	"gojav/engine"
+	 "gojav/cmd"
 )
 
-
 func main() {
-	cmd.Setup()
-	engine.Execute()
+	cmd.Execute()
 }
