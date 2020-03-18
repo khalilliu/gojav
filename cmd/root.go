@@ -1,11 +1,9 @@
 package cmd
 
 import (
-	"fmt"
 	"gojav/config"
 	"gojav/engine"
 	"gojav/parser"
-	"time"
 )
 
 var (
@@ -19,13 +17,13 @@ func Execute() {
 		Url:       engine.GetStartUrl(),
 		ParseFunc: parser.ParseMovieList,
 	})
-	for {
-		time.Sleep(time.Second)
-		if engine.TargetHasFound {
-			fmt.Println("抓取完成")
-			return
-		}
-	}
+	//for {
+	//	time.Sleep(time.Second)
+	//	if engine.TargetHasFound {
+	//		fmt.Println("抓取完成")
+	//		return
+	//	}
+	//}
 }
 
 

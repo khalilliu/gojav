@@ -2,11 +2,16 @@ package engine
 
 type ParseResult struct {
 	Requests []Request
-	Items []interface{}
+	Items    []interface{}
 }
 
 type Request struct {
-	Url string
+	Url       string
 	ParseFunc func([]byte) ParseResult
 }
+
+func NilParser([]byte) ParseResult {
+	return ParseResult{}
+}
+
 

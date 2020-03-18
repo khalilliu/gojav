@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"errors"
 	"fmt"
-	"gojav/config"
 	"golang.org/x/net/html/charset"
 	"golang.org/x/text/encoding"
 	"golang.org/x/text/encoding/unicode"
@@ -12,20 +11,11 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"net/url"
-	"time"
 )
 
 func Fetch(rUrl string) ([]byte, error) {
-
-	proxyUrl, err := url.Parse(config.Cfg.Proxy)
-	http.DefaultTransport = &http.Transport{Proxy: http.ProxyURL(proxyUrl)}
-
-	client := &http.Client{
-		Timeout:  time.Duration(config.Cfg.Timeout) * time.Millisecond,
-	}
-
 	request, _ := http.NewRequest(http.MethodGet,  rUrl, nil)
+
 	resp, err := client.Do(request)
 	if err != nil {
 		fmt.Println("resp error:", err)

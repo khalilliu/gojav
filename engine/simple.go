@@ -12,6 +12,7 @@ var (
 	TargetHasFound = false
 	curPage        = 1
 	end            = false
+	total          = 0
 )
 
 type SimpleEngine struct {

@@ -20,11 +20,11 @@ func init() {
 				Value:       2,
 				Destination: &config.Cfg.Parallel,
 			},
-			&cli.IntFlag{
+			&cli.Int64Flag{
 				Name:        "timeout",
 				Aliases:     []string{"t"},
-				Usage:       "自定义连接超时时间(毫秒)",
-				Value:       6000,
+				Usage:       "自定义连接超时时间(秒)",
+				Value:       6,
 				Destination: &config.Cfg.Timeout,
 			},
 			&cli.IntFlag{
@@ -38,7 +38,7 @@ func init() {
 				Name:        "proxy",
 				Aliases:     []string{"x"},
 				Usage:       "使用代理服务器, 例：-x http://127.0.0.1:8087",
-				Value:       "http://127.0.0.1:1087",
+				Value:       "",
 				Destination: &config.Cfg.Proxy,
 			},
 			&cli.StringFlag{
