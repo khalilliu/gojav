@@ -25,7 +25,7 @@ func init() {
 				Name:        "timeout",
 				Aliases:     []string{"t"},
 				Usage:       "自定义连接超时时间(秒)",
-				Value:       6,
+				Value:       30,
 				Destination: &config.Cfg.Timeout,
 			},
 			&cli.IntFlag{
@@ -97,7 +97,7 @@ func init() {
 			}
 
 			fmt.Printf("========== 获取资源站点：%s ==========\n", config.BaseUrl)
-			fmt.Printf("并行链接数: %d, 连接超时设置：%d \n", config.Cfg.Parallel, config.Cfg.Timeout)
+			fmt.Printf("并行链接数: %d, 连接超时设置：%d秒 \n", config.Cfg.Parallel, config.Cfg.Timeout)
 			fmt.Printf("磁链保存位置: %s, 代理服务器: %s \n", utils.RootPath() + "/" + config.Cfg.Output, proxy)
 			return nil
 		},

@@ -22,7 +22,7 @@ func Execute() {
 	}
 
 	e := &engine.ConcurrentEngine{
-		Scheduler: &scheduler.SimpleScheduler{},
+		Scheduler: &scheduler.QueueScheduler{},
 		WorkerCount: config.Cfg.Parallel,
 		ItemChan: itemChan,
 	}

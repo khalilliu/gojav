@@ -8,16 +8,16 @@ import (
 	"gojav/model"
 	"gojav/utils"
 	"log"
+	"os"
 	"strings"
 )
-
 
 func ItemSaver() (chan engine.Item, error) {
 	out := make(chan engine.Item)
 	go func() {
 		for {
-			item := <- out
-			fmt.Println(color.CyanString("Item Saver"), item.Fanhao + ".json")
+			item := <-out
+			fmt.Println(color.CyanString("Item Saver"), item.Fanhao+".json")
 			err := SaveItem(item)
 			if err != nil {
 				log.Printf("Item Saver :error saving item %v : %v ", item, err)
@@ -33,13 +33,26 @@ func SaveItem(item engine.Item) error {
 	if utils.IsExist(jsonFilePath) {
 		fmt.Printf("文件: %s 已存在\n", jsonFilePath)
 	}
+
+	// save 种子链接
+	if len(item.Magnets) > 0 {
+		magnetPath := outputDir + "/magnet.txt"
+		file, err := os.Create(magnetPath)
+		defer file.Close()
+		if err != nil {
+			log.Fatal(err)
+		}
+		file.WriteString(item.Magnets[0].Link)
+	}
+
 	// save json
-	itemSave := map[string]string{}
+	itemSave := map[string]interface{}{}
 	mapMovie(item.Movie, &itemSave)
 	err := utils.SaveFileToJson(itemSave, jsonFilePath)
 	if err != nil {
-		return err
+		log.Fatal(err)
 	}
+
 	return nil
 	// save cover
 	//converFilePath := outputDir + "/" + item.Fanhao + ".jpg"
@@ -63,30 +76,26 @@ func SaveItem(item engine.Item) error {
 	//return
 }
 
-func mapMovie(item model.Movie, itemSave *map[string]string) {
+func mapMovie(item model.Movie, itemSave *map[string]interface{}) {
 	(*itemSave)["番号"] = item.Fanhao
 	(*itemSave)["影片地址"] = item.Link
 	(*itemSave)["片名"] = item.Title
 	(*itemSave)["发售日期"] = item.Date
 	(*itemSave)["时长"] = item.Duration
-	(*itemSave)["演员表"] = strings.Join(item.Actress, ",")
+	(*itemSave)["演员表"] = item.Actress
 	(*itemSave)["类别"] = item.Series
 	(*itemSave)["系列"] = strings.Join(item.Category, ",")
+	s := []string{}
 	if config.Cfg.Allmag {
-		s := ""
-		for i, v := range item.Magnets {
-			if i != 0 {
-				s += ","
-			}
-			s += fmt.Sprintf("%s:%s\n", v.SizeText, v.Link)
+		for _, v := range item.Magnets {
+			s = append(s, fmt.Sprintf("[%s]:%s", v.SizeText, v.Link))
 		}
-		s = "[" + s + "]"
-		(*itemSave)["下载磁链"] = strings.Join(item.Category, ",")
-	} else {
-		(*itemSave)["下载磁链"] = fmt.Sprintf("%s:%s", item.Magnets[0].SizeText, item.Magnets[0].Link)
-	}
-}
 
+	} else {
+		s = append(s, fmt.Sprintf("[%s]:%s", item.Magnets[0].SizeText, item.Magnets[0].Link))
+	}
+	(*itemSave)["下载磁链"] = s
+}
 
 //func getSnapshot(fanhao, url string) {
 //	strs := strings.Split(url, "/")
