@@ -2,19 +2,12 @@ package engine
 
 import (
 	"fmt"
-	"gojav/model"
-	"gojav/persist"
-)
-
-var (
-	startUrl       string
-	TargetHasFound = false
-	CurPage        = 1
-	end            = false
-	total          = 0
 )
 
 type SimpleEngine struct {
+	Scheduler   Scheduler //调度器
+	WorkerCount int       // worker的数量
+	ItemChan    chan Item // 接收最终结果的chan
 }
 
 func (e *SimpleEngine) Run(seeds ...Request) {
@@ -33,7 +26,7 @@ func (e *SimpleEngine) Run(seeds ...Request) {
 		requests = append(requests, parseResult.Requests...)
 
 		for _, item := range parseResult.Items {
-			persist.SaveItem(item.(model.Movie))
+			e.ItemChan <- item
 		}
 	}
 

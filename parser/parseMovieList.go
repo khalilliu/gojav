@@ -40,6 +40,7 @@ func ParseMovieList(content [] byte) (result engine.ParseResult) {
 			videoIds = append(videoIds, strs[len(strs)-1])
 			result.Requests = append(result.Requests, engine.Request{
 				Url:link,
+				Type: engine.HTML,
 				ParseFunc: func(content []byte) engine.ParseResult {
 					return ParseMovie(link, content)
 				},
@@ -64,6 +65,7 @@ func ParseMovieList(content [] byte) (result engine.ParseResult) {
 		nextLink := utils.GetUrl(nextPage)
 		result.Requests = append(result.Requests, engine.Request{
 			Url: nextLink,
+			Type: engine.HTML,
 			ParseFunc: ParseMovieList,
 		})
 	}

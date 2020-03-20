@@ -1,12 +1,12 @@
 package cmd
 
 import (
-	"fmt"
 	"gojav/config"
 	"gojav/engine"
 	"gojav/parser"
+	"gojav/persist"
+	"gojav/scheduler"
 	"gojav/utils"
-	"time"
 )
 
 var (
@@ -15,18 +15,23 @@ var (
 
 func Execute() {
 	// 程序主入口
-	e := &engine.SimpleEngine{}
+
+	itemChan, err := persist.ItemSaver()
+	if err != nil {
+		panic(err)
+	}
+
+	e := &engine.ConcurrentEngine{
+		Scheduler: &scheduler.SimpleScheduler{},
+		WorkerCount: config.Cfg.Parallel,
+		ItemChan: itemChan,
+	}
 	e.Run(engine.Request{
 		Url:       utils.GetUrl(""),
+		Type: engine.HTML,
 		ParseFunc: parser.ParseMovieList,
 	})
-	for {
-		time.Sleep(time.Second)
-		if engine.TargetHasFound {
-			fmt.Println("抓取完成")
-			break
-		}
-	}
+
 }
 
 

@@ -30,11 +30,11 @@ func RootPath() string {
 	return pwd
 }
 
-func SaveFileToJson(item interface{}, dest string) {
+func SaveFileToJson(item interface{}, dest string) error {
 	jsonf, err := json.MarshalIndent(item, "", "\t")
 	if err != nil {
 		log.Fatal("saveJsonToFile", err)
-		return
+		return err
 	}
 
 	file, err := os.Create(dest)
@@ -42,10 +42,10 @@ func SaveFileToJson(item interface{}, dest string) {
 
 	if err != nil {
 		log.Fatal("saveJsonToFile", err)
-		return
+		return err
 	}
 
 	buf := bytes.NewBuffer(jsonf)
-	io.Copy(file, buf)
-	return
+	_, err = io.Copy(file, buf)
+	return err
 }

@@ -18,7 +18,7 @@ func init() {
 				Name:        "parallel",
 				Aliases:     []string{"p"},
 				Usage:       "设置每秒抓取请求数",
-				Value:       2,
+				Value:       3,
 				Destination: &config.Cfg.Parallel,
 			},
 			&cli.Int64Flag{

@@ -41,15 +41,32 @@ func ParseMovie(link string, content []byte) engine.ParseResult {
 		Lang:   "zh",
 	}
 
+	// 创建目录
+	itemOutDir := config.Cfg.Output + "/" + fanhao
+	utils.EnsureNestDir(itemOutDir)
+	mgnetFilePath := path.Join(itemOutDir, fanhao+".json")
+
 	script, _ := doc.Find("body script").Eq(2).Html()
 
+	// 获取 uc, gid, img
 	parseScript(script, &movie)
+	if p := itemOutDir + "/" + fanhao + ".jpg"; !utils.IsExist(p) {
+		result.Requests = append(result.Requests, engine.Request{
+			Url: movie.Img,
+			Type: engine.IMG,
+			ParseFunc: func(content []byte) engine.ParseResult {
+				return ParseImg(content, p)
+			},
+		})
+	}
 
 	title := doc.Find("div h3").Eq(0).Text()
 	movie.Title = title
 
 	doc.Find("div.info > p").Each(func(i int, selection *goquery.Selection) {
 		text := selection.Text()
+
+
 		if strings.Contains(text, "發行日期:") {
 			movie.Date = strings.Replace(text, "發行日期: ", "", 1)
 		} else if strings.Contains(text, "系列: ") {
@@ -73,12 +90,21 @@ func ParseMovie(link string, content []byte) engine.ParseResult {
 	doc.Find("a.sample-box").Each(func(i int, selection *goquery.Selection) {
 		href, _ := selection.Attr("href")
 		movie.Snapshot = append(movie.Snapshot, href)
+		// getsnapshot path
+		strs := strings.Split(href, "/")
+		name := strs[len(strs)-1]
+		p := itemOutDir + "/" + name
+		if !utils.IsExist(p) {
+			result.Requests = append(result.Requests, engine.Request{
+				Url:href,
+				Type: engine.IMG,
+				ParseFunc: func(content []byte) engine.ParseResult {
+					return ParseImg(content, p)
+				},
+			})
+		}
 	})
 
-	// 创建目录
-	itemOutDir := config.Cfg.Output + "/" + fanhao
-	utils.EnsureNestDir(itemOutDir)
-	mgnetFilePath := path.Join(itemOutDir, fanhao+".json")
 
 	// 如果没有存储json, 就请求获取磁链
 	if !utils.IsExist(mgnetFilePath) {
@@ -113,7 +139,7 @@ func ParseMovie(link string, content []byte) engine.ParseResult {
 			movie.Magnets = append(movie.Magnets, magSizes...)
 		}
 		// 没有存储该片, limit--
-		result.Items = append(result.Items, movie)
+		result.Items = append(result.Items, engine.Item{movie})
 	}
 	return result
 }

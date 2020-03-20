@@ -4,7 +4,6 @@ import (
 	"gojav/config"
 	"net/http"
 	"net/url"
-	"time"
 )
 
 
@@ -20,7 +19,6 @@ func init() {
 	}
 	HttpClient = &http.Client{
 		Transport: httpTransport,
-		Timeout:  time.Duration(10 * time.Second),
 	}
 }
 
