@@ -1,10 +1,6 @@
 package main
 
-import (
-	"gojav/cmd"
-)
-
-
+import "gojav/cmd"
 
 func main() {
 	cmd.Execute()

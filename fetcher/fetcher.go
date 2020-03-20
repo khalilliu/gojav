@@ -15,8 +15,9 @@ import (
 
 func Fetch(rUrl string) ([]byte, error) {
 	request, _ := http.NewRequest(http.MethodGet,  rUrl, nil)
+	request.Header.Set("Referer", "https://www.javbus.com")
 
-	resp, err := client.Do(request)
+	resp, err := HttpClient.Do(request)
 	if err != nil {
 		fmt.Println("resp error:", err)
 		return nil, err
@@ -35,6 +36,29 @@ func Fetch(rUrl string) ([]byte, error) {
 	e := determinEncoding(bodyReader)
 	utf8Reader := transform.NewReader(bodyReader, e.NewDecoder())
 	return ioutil.ReadAll(utf8Reader)
+}
+
+func FetchWithoutEncoding(rUrl string) ([]byte, error) {
+	request, _ := http.NewRequest(http.MethodGet,  rUrl, nil)
+	request.Header.Set("Referer", "https://www.javbus.com")
+
+	resp, err := HttpClient.Do(request)
+	if err != nil {
+		fmt.Println("resp error:", err)
+		return nil, err
+	}
+	defer resp.Body.Close()
+	if resp == nil {
+		fmt.Println("resp error:", resp)
+		return nil, err
+	}
+	if resp.StatusCode != http.StatusOK {
+		fmt.Println("resp error:", resp)
+		return nil, errors.New(fmt.Sprintf("error: status code: %d", resp.StatusCode))
+	}
+
+	bodyReader := bufio.NewReader(resp.Body)
+	return ioutil.ReadAll(bodyReader)
 }
 
 func determinEncoding(r *bufio.Reader) encoding.Encoding {

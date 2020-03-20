@@ -14,4 +14,18 @@ type Movie struct {
 	Series   string   //系列
 	Category []string //类别
 	Snapshot []string //截图
+	Magnets  []Magnet //种子信息
+}
+
+type MovieJson struct {
+	Fanhao   string   //番号
+	Link     string   //链接
+	Duration string   //时长
+	Title    string   //片名
+	Actress  []string //演员表
+	Date     string   //发售时间
+	Series   string   //系列
+	Category []string //类别
+	Snapshot []string //截图
+	Magnets  []Magnet //种子信息
 }

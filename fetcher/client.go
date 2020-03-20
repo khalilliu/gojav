@@ -8,7 +8,7 @@ import (
 )
 
 
-var client *http.Client
+var HttpClient *http.Client
 
 func init() {
 	var httpTransport *http.Transport
@@ -18,12 +18,12 @@ func init() {
 	} else  {
 		httpTransport = &http.Transport{Proxy: http.ProxyFromEnvironment}
 	}
-	client = &http.Client{
+	HttpClient = &http.Client{
 		Transport: httpTransport,
 		Timeout:  time.Duration(10 * time.Second),
 	}
 }
 
 func Client() *http.Client {
-	return client
+	return HttpClient
 }

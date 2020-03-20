@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"reflect"
 	"sync"
 )
@@ -18,6 +17,7 @@ type Config struct {
 	Allmag   bool
 	Nopic    bool
 	Caption  bool
+	HasLimit bool
 }
 
 var (
@@ -35,7 +35,6 @@ func (c *Config) Set (key string,  val interface{}) {
 		f := s.FieldByName(key)
 		if f.IsValid() {
 			if f.CanSet() {
-				fmt.Println(f.Kind() == reflect.Int)
 				switch f.Kind() {
 				case reflect.Int:
 					f.SetInt(int64(val.(int)))

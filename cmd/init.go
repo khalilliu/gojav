@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/urfave/cli/v2"
 	"gojav/config"
+	"gojav/utils"
 	"log"
 	"os"
 )
@@ -85,9 +86,19 @@ func init() {
 			},
 		},
 		Action: func(c *cli.Context) error {
+			var proxy = config.Cfg.Proxy
+			if config.Cfg.Proxy == "" {
+				proxy = os.Getenv("https_proxy")
+				proxy = "使用系统环境默认Proxy: " + proxy
+			}
+
+			if config.Cfg.Limit != 0 {
+				config.Cfg.Set("HasLimit", true)
+			}
+
 			fmt.Printf("========== 获取资源站点：%s ==========\n", config.BaseUrl)
 			fmt.Printf("并行链接数: %d, 连接超时设置：%d \n", config.Cfg.Parallel, config.Cfg.Timeout)
-			fmt.Printf("磁链保存位置: %s, 代理服务器: %s \n", config.Cfg.Output, config.Cfg.Proxy)
+			fmt.Printf("磁链保存位置: %s, 代理服务器: %s \n", utils.RootPath() + "/" + config.Cfg.Output, proxy)
 			return nil
 		},
 	}

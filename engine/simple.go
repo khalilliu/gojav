@@ -2,15 +2,14 @@ package engine
 
 import (
 	"fmt"
-	"gojav/config"
-	"log"
-	"strconv"
+	"gojav/model"
+	"gojav/persist"
 )
 
 var (
 	startUrl       string
 	TargetHasFound = false
-	curPage        = 1
+	CurPage        = 1
 	end            = false
 	total          = 0
 )
@@ -34,19 +33,12 @@ func (e *SimpleEngine) Run(seeds ...Request) {
 		requests = append(requests, parseResult.Requests...)
 
 		for _, item := range parseResult.Items {
-			log.Printf("Got item %v", item)
+			persist.SaveItem(item.(model.Movie))
 		}
 	}
+
+
 	//TargetHasFound = true
 }
 
-func GetStartUrl() string {
-	startUrl = config.BaseUrl
-	if config.Cfg.Search != "" {
-		startUrl = fmt.Sprintf("%s%s/%s", config.BaseUrl, config.SearchRoute, config.Cfg.Search)
-	}
-	if curPage != 1 {
-		startUrl += "/page/%d" + strconv.Itoa(curPage)
-	}
-	return startUrl
-}
+

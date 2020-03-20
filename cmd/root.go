@@ -1,9 +1,12 @@
 package cmd
 
 import (
+	"fmt"
 	"gojav/config"
 	"gojav/engine"
 	"gojav/parser"
+	"gojav/utils"
+	"time"
 )
 
 var (
@@ -14,16 +17,16 @@ func Execute() {
 	// 程序主入口
 	e := &engine.SimpleEngine{}
 	e.Run(engine.Request{
-		Url:       engine.GetStartUrl(),
+		Url:       utils.GetUrl(""),
 		ParseFunc: parser.ParseMovieList,
 	})
-	//for {
-	//	time.Sleep(time.Second)
-	//	if engine.TargetHasFound {
-	//		fmt.Println("抓取完成")
-	//		return
-	//	}
-	//}
+	for {
+		time.Sleep(time.Second)
+		if engine.TargetHasFound {
+			fmt.Println("抓取完成")
+			break
+		}
+	}
 }
 
 
