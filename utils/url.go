@@ -3,6 +3,7 @@ package utils
 import (
 	"fmt"
 	"gojav/config"
+	"os"
 )
 
 func GetUrl(next string) string {
@@ -17,4 +18,12 @@ func GetUrl(next string) string {
 		url += next
 	}
 	return url
+}
+
+func UserHome() string {
+	dir, err := os.UserHomeDir()
+	if err != nil {
+		panic(err)
+	}
+	return dir
 }

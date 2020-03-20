@@ -60,7 +60,7 @@ func init() {
 				Name:        "output",
 				Aliases:     []string{"o"},
 				Usage:       "设置磁链和封面抓取结果的保存位置，默认为当前主目录下的 magnets 文件夹",
-				Value:       "magnets",
+				Value:       utils.UserHome() + "/magnets",
 				Destination: &config.Cfg.Output,
 			},
 			&cli.BoolFlag{
