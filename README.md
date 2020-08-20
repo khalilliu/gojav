@@ -8,4 +8,6 @@
 
 type below, then have fun!!!
 
-`go run main.go -s meyd -p 10`
+```
+go run main.go -s meyd -p 10
+```
